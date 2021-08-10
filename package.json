@@ -1,0 +1,24 @@
+{
+  "name": "dinerd-backend",
+  "version": "1.0.0",
+  "description": "This is the scaffolded backend for the _dinerd_ application. It must be installed and running before you are able to populate the front-end with restaurants.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joedietrich-dev/dinerd-backend.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/joedietrich-dev/dinerd-backend/issues"
+  },
+  "homepage": "https://github.com/joedietrich-dev/dinerd-backend#readme",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1"
+  }
+}
