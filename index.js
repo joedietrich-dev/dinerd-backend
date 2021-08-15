@@ -18,11 +18,13 @@ app.get('/restaurants', (req, res) => {
     const priceQuery = req.query.price === '1,2,3,4' ? '' : `&price=${req.query.price}`;
     axios({
       method: 'get',
-      url: `https://api.yelp.com/v3/businesses/search?term=food&location=${req.query.location}&radius=${req.query.distance}${priceQuery}`,
+      url: `https://api.yelp.com/v3/businesses/search?term=food&limit=50&location=${req.query.location}&radius=${req.query.distance}${priceQuery}`,
       headers: {
         Authorization: `Bearer ${process.env.YELP_KEY}`
       }
-    }).then(yelpResponse => res.send(yelpResponse.data))
+    }).then(yelpResponse => {
+      res.send(yelpResponse.data);
+    })
       .catch(err => {
         console.log(req.query);
         res.status(400).send(err.message);
