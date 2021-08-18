@@ -2,10 +2,10 @@
   "name": "dinerd-backend",
   "version": "1.0.0",
   "description": "This is the scaffolded backend for the _dinerd_ application. It must be installed and running before you are able to populate the front-end with restaurants.",
-  "main": "index.js",
+  "main": "./index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js"
+    "start": "node ./index.js"
   },
   "repository": {
     "type": "git",

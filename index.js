@@ -33,6 +33,7 @@ app.get('/restaurants', (req, res) => {
     res.status(404).send('No match for requested URL found.');
   }
 })
+app.get('/api/test', (req, res) => res.send(testData));
 app.listen(port, () => console.log('Listening on port ' + port));
 
 
