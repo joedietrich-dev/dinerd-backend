@@ -1,7 +1,7 @@
 require('dotenv').config();
 const axios = require('axios');
 const express = require('express');
-const testData = require('./testData.json');
+// const testData = require('./testData.json');
 const app = express();
 const port = process.env.PORT || 80;
 
@@ -10,7 +10,7 @@ app.use((req, res, next) => {
   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
   next();
 })
-app.get('/api/test', (req, res) => res.send(testData));
+// app.get('/api/test', (req, res) => res.send(testData));
 app.get('/restaurants', (req, res) => {
   if (Object.keys(req.query).length >= 3 && req.query.location && req.query.price && req.query.distance) {
     // More results when omitting price
