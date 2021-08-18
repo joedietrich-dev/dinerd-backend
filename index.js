@@ -3,10 +3,9 @@ const axios = require('axios');
 const express = require('express');
 const testData = require('./testData.json');
 const app = express();
-const port = process.env.PORT;
+const port = process.env.PORT || 80;
 
 app.use((req, res, next) => {
-  // https://enable-cors.org/server_expressjs.html
   res.header('Access-Control-Allow-Origin', '*');
   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
   next();
