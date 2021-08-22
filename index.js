@@ -1,18 +1,17 @@
 require('dotenv').config();
 const axios = require('axios');
 const express = require('express');
-// const testData = require('./testData.json');
-const app = express();
 const port = process.env.PORT || 80;
+const app = express();
 
 app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*');
-  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+  // res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
   next();
 })
-// app.get('/api/test', (req, res) => res.send(testData));
+
 app.get('/restaurants', (req, res) => {
-  if (Object.keys(req.query).length >= 3 && req.query.location && req.query.price && req.query.distance) {
+  if (req.query.location && req.query.price && req.query.distance) {
     // More results when omitting price
     const priceQuery = req.query.price === '1,2,3,4' ? '' : `&price=${req.query.price}`;
     axios({
@@ -21,9 +20,7 @@ app.get('/restaurants', (req, res) => {
       headers: {
         Authorization: `Bearer ${process.env.YELP_KEY}`
       }
-    }).then(yelpResponse => {
-      res.send(yelpResponse.data);
-    })
+    }).then(yelpResponse => res.send(yelpResponse.data))
       .catch(err => {
         console.log(req.query);
         res.status(400).send(err.message);
@@ -33,7 +30,10 @@ app.get('/restaurants', (req, res) => {
     res.status(404).send('No match for requested URL found.');
   }
 })
-app.get('/', (req, res) => res.send(JSON.stringify({})));
+app.get('/', (req, res) => res.send('Server is Active'));
+app.use(function (req, res, next) {
+  res.status(404).send('No match for requested URL found.')
+})
 app.listen(port, () => console.log('Listening on port ' + port));
 
 
